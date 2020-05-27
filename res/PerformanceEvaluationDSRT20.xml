@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objectModel xmlns="http://www.sisostds.org/schemas/IEEE1516-2010"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.sisostds.org/schemas/IEEE1516-2010 http://www.sisostds.org/schemas/IEEE1516-DIF-2010.xsd">
+   <modelIdentification>
+      <name>PerformanceEvaluationDSRT20.xml</name>
+      <type>FOM</type>
+      <version>1.0</version>
+      <modificationDate>2020-05-11</modificationDate>
+      <purpose>HLA RTI Performance Evaluation</purpose>
+      <applicationDomain>HLA RTI Performance Evaluation</applicationDomain>
+      <poc>
+         <pocType>Primary author</pocType>
+         <pocName>Moritz Guetlein</pocName>
+         <pocOrg>FAU - Informatik 7</pocOrg>
+         <pocEmail>moritz.guetlein@fau.de</pocEmail>
+      </poc>
+   </modelIdentification>
+   <objects>
+      <objectClass>
+         <name>HLAobjectRoot</name>
+			<attribute>
+				<name>HLAprivilegeToDeleteObject</name>
+				<dataType>HLAtoken</dataType>
+				<updateType>Static</updateType>
+				<ownership>DivestAcquire</ownership>
+				<sharing>PublishSubscribe</sharing>
+				<transportation>HLAreliable</transportation>
+				<order>TimeStamp</order>
+			</attribute>
+         <objectClass>
+            <name>TestcaseObject</name>
+            <sharing>PublishSubscribe</sharing>
+            <attribute>
+               <name>TestcaseObjectAttribute</name>
+               <dataType>TestInteger</dataType>
+               <updateType>Conditional</updateType>
+               <ownership>DivestAcquire</ownership>
+               <sharing>PublishSubscribe</sharing>
+               <transportation>HLAreliable</transportation>
+               <order>TimeStamp</order>
+            </attribute>
+         </objectClass>
+      </objectClass>
+   </objects>
+   <interactions>
+      <interactionClass>
+         <name>HLAinteractionRoot</name>
+         <interactionClass>
+               <name>TestcaseInteraction</name>
+               <sharing>PublishSubscribe</sharing>
+               <transportation>HLAreliable</transportation>
+               <order>TimeStamp</order>   
+               <parameter>
+                  <name>Payload</name>
+                  <dataType>HLAopaqueData</dataType>
+                  <semantics>A very good Payload.</semantics>
+            </parameter> 
+         </interactionClass>
+      </interactionClass>
+   </interactions>
+   <dimensions>
+   </dimensions>
+   <time>
+      <timeStamp>
+         <dataType>TestInteger</dataType>
+      </timeStamp>
+      <lookahead>
+         <dataType>TestInteger</dataType>
+      </lookahead>
+   </time>
+   <transportations/>
+   <switches>
+      <autoProvide isEnabled="false"/>
+      <conveyRegionDesignatorSets isEnabled="false"/>
+      <conveyProducingFederate isEnabled="false"/>
+      <attributeScopeAdvisory isEnabled="false"/>
+      <attributeRelevanceAdvisory isEnabled="false"/>
+      <objectClassRelevanceAdvisory isEnabled="false"/>
+      <interactionRelevanceAdvisory isEnabled="false"/>
+      <serviceReporting isEnabled="false"/>
+      <exceptionReporting isEnabled="false"/>
+      <delaySubscriptionEvaluation isEnabled="false"/>
+      <automaticResignAction resignAction="CancelThenDeleteThenDivest"/>
+   </switches>
+   <dataTypes>
+      <simpleDataTypes>
+         <simpleData>
+            <name>TestInteger</name>
+            <representation>HLAinteger64BE</representation>
+            <units>NA</units>
+            <resolution>1</resolution>
+            <accuracy>NA</accuracy>
+            <semantics>Time and time intervals</semantics>
+         </simpleData>
+      </simpleDataTypes>
+      <enumeratedDataTypes/>
+      <arrayDataTypes/>
+      <fixedRecordDataTypes/>
+      <variantRecordDataTypes/>
+	</dataTypes>
+</objectModel>
